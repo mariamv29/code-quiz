@@ -28,7 +28,7 @@ h1 {
 }
 
 .container {
-  width: 800px;
+  width: auto;
   max-height: auto;
   background-color: rgb(48, 45, 45);
   border-radius: 10px;
@@ -46,9 +46,7 @@ h1 {
 #question {
   font-size: 25px;
   color: aliceblue;
-
 }
-
 
 .btn {
   padding: 15px 10px;
@@ -73,14 +71,12 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.396);
 }
 
-
 .btn-grid {
   display: grid;
   grid-template-columns: reapeat(2, auto);
   margin: 10px;
 }
 
-
 .hide {
   display: none;
-} 
+}

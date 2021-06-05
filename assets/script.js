@@ -1,38 +1,55 @@
-//Adding event lister to begin button
-// document.addEventListener("DOMContentLoaded", () => {
-//   var timeLeftDisplay = document.querySelector("#time-left");
-//   var startBtn = document.querySelector("#start-button");
-//   var timeLeft = 60;
+//Setting DOM Elements
+var buttonEl = document.getElementById("start-btn");
+var questionsContainerElement = document.getElementById("question-container");
+var randomQuestions, currentQuestionsIndex;
+var questionsElement = document.getElementById("questions");
+var answerButtonsElements = document.getElementById("answer-buttons");
 
-//   function countDown() {
-//     setInterval(function () {
-//       if (timeLeft <= 0) {
-//         clearInterval((timeLeft = 0));
-//       }
-//       timeLeftDisplay.innerHTML = timeLeft;
-//       timeLeft -= 1;
-//     }, 1000);
-//   }
-//   startBtn.addEventListener("click", countDown);
-// });
+buttonEl.addEventListener("click", startQuiz);
 
-// beginQuiz();
+//Adding function to startQuiz
+function startQuiz() {
+  console.log("Started");
+  buttonEl.classList.add("hide");
+  randomQuestions = questions.sort(() => Math.random() - 0.5);
+  //Remove the class hide from it
+  questionsContainerElement.classList.remove("hide");
+  currentQuestionsIndex = 0;
+}
 
-// set att & remove the class hide from it
+///Function Selecting answer
 
-// create a selector for the ID for hide div - querySelector/ selectelby ID
-// remove class
-
-// var questions = [
-
-//   {
-//     question: "This is the question",
-//     choices: ["choice 1", "choice 2", "choice 3"],
-//     correctAnswer: [0]
-//   },
-//   {
-//     question: "This is the question",
-//     choices: ["choice 1", "choice 2", "choice 3"],
-//     correctAnswer: [1]
-//   }
-// ]
+// Questions array
+var questions = [
+  {
+    question: "What command do you use to 'push' your code to GitHub?",
+    choices: ["git init", "git origin push main", "git remote -v", "git pull"],
+    correctAnswer: [2],
+  },
+  {
+    question: "Which property does NOT belong in the CSS Box Model?",
+    choices: ["Main", "Margin", "Padding", "Border", "Content"],
+    correctAnswer: [1],
+  },
+  {
+    question: "What is Moment.js used for?",
+    choices: [
+      "Adding different font to the app",
+      "Dragging and dropping",
+      "Date and time functionality",
+      "Adding color to the app",
+    ],
+    correctAnswer: [3],
+  },
+  {
+    question: "What command do you use to checkout and create a new branch?",
+    choices: [
+      "git clone",
+      "git rm -fr",
+      "git checkout -b",
+      "git create branch",
+      "git branch",
+    ],
+    correctAnswer: [3],
+  },
+];
