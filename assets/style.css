@@ -6,7 +6,13 @@
 }
 
 :root {
-  background-color: rgba(233, 233, 233, 0.779);
+  background-color: #e419eb;
+  background-image: linear-gradient(
+    45deg,
+    #d30ed3 0%,
+    #d1eb3e 52%,
+    #2b39ff 90%
+  );
 }
 
 body {
@@ -24,33 +30,40 @@ h1 {
   text-align: center;
   color: aliceblue;
   font-size: 50px;
-  text-shadow: 0 0 10px hsl(298, 100%, 58%);
+  text-shadow: 0 0 10px hsl(305, 87%, 30%);
 }
 
 .container {
   width: auto;
-  max-height: auto;
-  background-color: rgb(48, 45, 45);
+  height: 70vh;
+  background-color: rgb(230, 230, 230);
   border-radius: 10px;
   padding: 30px;
 }
+body.correct {
+  background-color: #00ea27;
+  background-image: linear-gradient(180deg, #eaff8b 0% ,#00e2ea 100%);
+}
 
+body.wrong {
+  background-color: #ea0028;
+  background-image: linear-gradient(180deg, #ff9a8b 0% ,#ea0028 100%);
+}
 .controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10%;
   align-items: center;
 }
 
 #question {
   font-size: 25px;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
 }
 
 .btn {
-  padding: 15px 10px;
-  font-size: 20px;
+  padding: 15px 15px;
+  font-size: 25px;
   margin: 10px;
   color: aliceblue;
   border-radius: 5px;
@@ -59,7 +72,7 @@ h1 {
     45deg,
     #8bf9ff 0%,
     #2bf4ff 52%,
-    #f82bff 90%
+    #6b06ad 90%
   );
   transition: all 0.5s ease-out;
   background-size: 1px 100px;
@@ -74,7 +87,7 @@ h1 {
 .btn-grid {
   display: grid;
   grid-template-columns: reapeat(2, auto);
-  margin: 10px;
+  margin: 5px;
 }
 
 .hide {
