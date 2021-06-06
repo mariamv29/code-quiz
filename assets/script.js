@@ -4,10 +4,32 @@ var nextButton = document.getElementById("next-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answerButtonsElement = document.getElementById("answer-buttons");
-
+var timeEl = document.getElementById("time");
+var timeLeft = 60;
 var randomQuestions, currentQuestionIndex;
 
+//quiz buttons
 buttonEl.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
+
+//Start Time
+function countDown() {
+  var timerInterval = setInterval(function () {
+    timeEl.classList.remove("hide");
+  timeEl.innerText = "Time Left:";
+    timeEl.textContent = timeLeft;
+
+    if (timeLeft === 0 || currentQuestionIndex === questions.length) {
+      clearInterval(timerInterval);
+    }
+    timeLeft.innerHTML = timeLeft;
+    timeLeft -= 1;
+  }, 1000);
+  
+}
 
 //Adding function to startQuiz
 function startQuiz() {
@@ -17,6 +39,7 @@ function startQuiz() {
   //Remove the class hide from it
   questionContainerElement.classList.remove("hide");
 
+  countDown();
   setNextQuestion();
 }
 
@@ -34,7 +57,7 @@ function showQuestion(question) {
     button.innerText = answer.text;
     button.classList.add("btn");
     if (answer.correct) {
-      button.dataset.correct - answer.correct;
+      button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
     answerButtonsElement.appendChild(button);
@@ -51,27 +74,32 @@ function resetContainer() {
 
 // function selectchoice ()
 function selectAnswer(e) {
-  var seletedButton = e.target
-  var correct = seletedButton.dataset.correct
-  setStatusClass(document.body, correct)
-  Array.from(answerBUttonsElement.children).forEach(button => {
-    setStatusClass(button, button.dataset.correct)
-  })
-}
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element)
-  if(correct) {
-    element.classList.add('correct') 
+  var seletedButton = e.target;
+  var correct = seletedButton.dataset.correct;
+  // setStatusClass(document.classList, correct);
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  if (randomQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove("hide");
   } else {
-    element.classList.add('wrong')
+    buttonEl.innerText = "Restart";
+    buttonEl.classList.remove("hide");
   }
 }
 
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
 
 function clearStatusClass(element) {
-  element.classList.remove('correct')
-  element.classList.remove('wrong')
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
 }
 // Questions array
 var questions = [
@@ -84,30 +112,32 @@ var questions = [
       { text: "git pull", correct: false },
     ],
   },
+
+  {
+    question: "Which property does NOT belong in the CSS Box Model?",
+    answers: [
+      { text: "Main", correct: true },
+      { text: "Margin", correct: false },
+      { text: "Padding", correct: false },
+      { text: "Content", correct: false },
+    ],
+  },
+  {
+    question: "What is Moment.js used for?",
+    answers: [
+      { text: "Adding different font to the app", correct: false },
+      { text: "Dragging and dropping", correct: false },
+      { text: "Date and time functionality", correct: true },
+      { text: "Adding color to the app", correct: false },
+    ],
+  },
+  {
+    question: "What command do you use to checkout and create a new branch?",
+    answers: [
+      { text: "git clone", correct: false },
+      { text: "git rm -fr", correct: false },
+      { text: "git checkout -b", correct: true },
+      { text: "git create branch", correct: false },
+    ],
+  },
 ];
-// {
-//   question: "Which property does NOT belong in the CSS Box Model?",
-//   choices: ["Main", "Margin", "Padding", "Border", "Content"],
-//   correctAnswer: [1],
-// },
-// {
-//   question: "What is Moment.js used for?",
-//   choices: [
-//     "Adding different font to the app",
-//     "Dragging and dropping",
-//     "Date and time functionality",
-//     "Adding color to the app",
-//   ],
-//   correctAnswer: [3],
-// },
-// {
-//   question: "What command do you use to checkout and create a new branch?",
-//   choices: [
-//     "git clone",
-//     "git rm -fr",
-//     "git checkout -b",
-//     "git create branch",
-//     "git branch",
-//   ],
-//   correctAnswer: [3],
-// },

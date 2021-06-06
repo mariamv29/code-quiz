@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <h1>Code Quiz</h1>
     <div class="container">
-      <h1>Code Quiz</h1>
-
       <div id="question-container" class="hide">
+        <div id="time">Time Left: 60 Seconds</div>
+
         <div id="question">Questions</div>
         <div id="answer-buttons" class="btn-grid">
           <button class="btn">Answer 1</button>
@@ -21,17 +22,12 @@
         </div>
       </div>
       <div class="controls">
-        <button class="btn" id="start-btn">Start</button>
-        <button class="btn hide" id="next-btn">Next</button>
-        <button class="btn" id="score-btn">High score</button>
+        <button class="start-btn btn" id="start-btn">Start</button>
+        <button class="next-btn btn hide" id="next-btn">Next</button>
+        <button class="high-btn btn" id="score-btn">High score</button>
       </div>
     </div>
-
-    <!-- <h3>Time Left: <span id="time-left"> 60</span></h3>  -->
-    <!-- <button class="btn" id="start-button">Start</button>
-        </a>
-        <button class="btn" id="score-btn">High score</button>
-      </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <script src="./assets/script.js"></script>
   </body>

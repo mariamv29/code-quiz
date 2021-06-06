@@ -22,7 +22,6 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  margin: 0;
 }
 
 h1 {
@@ -33,25 +32,22 @@ h1 {
   text-shadow: 0 0 10px hsl(305, 87%, 30%);
 }
 
+#time {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  text-shadow: 0 0 10px hsl(305, 87%, 30%);
+}
 .container {
-  width: auto;
-  height: 70vh;
+  margin: 0 auto;
   background-color: rgb(230, 230, 230);
   border-radius: 10px;
-  padding: 30px;
-}
-body.correct {
-  background-color: #00ea27;
-  background-image: linear-gradient(180deg, #eaff8b 0% ,#00e2ea 100%);
+  padding: 40px 200px;
 }
 
-body.wrong {
-  background-color: #ea0028;
-  background-image: linear-gradient(180deg, #ff9a8b 0% ,#ea0028 100%);
-}
 .controls {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -72,7 +68,7 @@ body.wrong {
     45deg,
     #8bf9ff 0%,
     #2bf4ff 52%,
-    #6b06ad 90%
+    #911edd 90%
   );
   transition: all 0.5s ease-out;
   background-size: 1px 100px;
@@ -88,6 +84,22 @@ body.wrong {
   display: grid;
   grid-template-columns: reapeat(2, auto);
   margin: 5px;
+}
+
+.btn.correct {
+  background-color: #00ea27;
+  background-image: linear-gradient(45deg, #eaff8b 0%, #00e2ea 100%);
+}
+
+.btn.wrong {
+  background-color: #ea0028;
+  background-image: linear-gradient(180deg, #ff9a8b 0%, #ea0028 100%);
+}
+
+#next-btn,
+#score-btn {
+  width: auto;
+  text-align: center;
 }
 
 .hide {
