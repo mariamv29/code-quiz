@@ -1,15 +1,29 @@
 //Setting DOM Elements
-var buttonEl = document.getElementById("start-btn");
+var startButton = document.getElementById("start-btn");
 var nextButton = document.getElementById("next-btn");
+var submitScoreBtn = document.getElementById("submit-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answerButtonsElement = document.getElementById("answer-buttons");
+var scoreContainerElement = document.getElementById("scoreContainer");
+var highscoreDiv = document.getElementById("highscore-div");
+var highscoreInputName = document.getElementById("highscore-initials");
+var scoreDisplay = document.getElementById("score");
 var timeEl = document.getElementById("time");
-var timeLeft = 60;
-var randomQuestions, currentQuestionIndex;
+var questionContainerElement = document.getElementById("question-container");
 
-//quiz buttons
-buttonEl.addEventListener("click", startQuiz);
+//Global variables
+var timeLeft = 60;
+var score = 0;
+var timerInvertal;
+var randomQuestions, currentQuestionIndex;
+var correct;
+var saveTask;
+var highScores = JSON.parse(localStorage.getItem("high-scroes") || "{}");
+console.log("    LOADED: ", highScores);
+
+//quiz buttons event listener
+startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
@@ -18,22 +32,21 @@ nextButton.addEventListener("click", () => {
 //Start Time
 function countDown() {
   var timerInterval = setInterval(function () {
-    timeEl.classList.remove("hide");
-  timeEl.innerText = "Time Left:";
     timeEl.textContent = timeLeft;
 
     if (timeLeft === 0 || currentQuestionIndex === questions.length) {
       clearInterval(timerInterval);
+
+      // game over or restart logic
     }
     timeLeft.innerHTML = timeLeft;
     timeLeft -= 1;
   }, 1000);
-  
 }
 
 //Adding function to startQuiz
 function startQuiz() {
-  buttonEl.classList.add("hide");
+  startButton.classList.add("hide");
   randomQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   //Remove the class hide from it
@@ -48,6 +61,7 @@ function setNextQuestion() {
   resetContainer();
   showQuestion(randomQuestions[currentQuestionIndex]);
 }
+
 //Iterate questions array
 function showQuestion(question) {
   questionElement.innerText = question.question;
@@ -83,11 +97,14 @@ function selectAnswer(e) {
   if (randomQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide");
   } else {
-    buttonEl.innerText = "Restart";
-    buttonEl.classList.remove("hide");
+    startButton.classList.add("hide");
+    scoreContainerElement.classList.remove("hide");
+    questionContainerElement.classList.add("hide");
+    console.log("questionContainerElement", questionContainerElement);
   }
 }
 
+//checking answer status
 function setStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
@@ -101,7 +118,29 @@ function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
 }
+
+var saveHighScores = function () {
+  var initials = highscoreInputName.value;
+  console.log(initials);
+
+  if (initials !== "") {
+    highScores[initials] = timeLeft;
+
+    localStorage.setItem("high-scroes", JSON.stringify(highScores));
+    console.log("    SAVED: ", highScores);
+    alert("We have saved your highscore");
+  } else {
+    alert("please add the initials");
+  }
+};
+
+// var endGame = function () {
+//   window.alert("the quiz has now ended. Let's see how you did!");
+//   console.log(endGame);
+// };
+
 // Questions array
+
 var questions = [
   {
     question: "What command do you use to 'push' your code to GitHub?",

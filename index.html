@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Quiz</title>
-    <link rel="stylesheet" href="./assets/style.css" />
-  </head>
-  <body>
-    <h1>Code Quiz</h1>
-    <div class="container">
-      <div id="question-container" class="hide">
-        <div id="time">Time Left: 60 Seconds</div>
 
-        <div id="question">Questions</div>
-        <div id="answer-buttons" class="btn-grid">
-          <button class="btn">Answer 1</button>
-          <button class="btn">Answer 2</button>
-          <button class="btn">Answer 3</button>
-          <button class="btn">Answer 4</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Quiz</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+
+<body>
+  <h1>Code Quiz</h1>
+  <div class="container">
+    <div id="question-container" class="hide">
+      <div id="time">Time Left: 60 Seconds</div>
+      <div id="question">Questions</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answers</button>
       </div>
       <div class="controls">
-        <button class="start-btn btn" id="start-btn">Start</button>
         <button class="next-btn btn hide" id="next-btn">Next</button>
-        <button class="high-btn btn" id="score-btn">High score</button>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <button class="start-btn btn" id="start-btn">Start</button>
+
+    <!-- <div id="endquiz"></div> -->
+    <div id="scoreContainer" class="hide">
+      <div id="highscore-div">
+        <div id="final-score">
+          <h3>User Initials</h3>
+          <input type="text" size="30" placeholder="Enter your initials for final score" name="highscore-initials"
+            id="highscore-initials" />
+          <h3>Score</h3>
+        </div>
+        <button class="Submit-btn btn" id="submit-btn" onclick="saveHighScores()">Submit</button>
+
+        <!-- <div id = "highscore-initials"></div>
+      <div id = "score"></div> -->
+      </div>
+    </div>
 
     <script src="./assets/script.js"></script>
-  </body>
+</body>
+
 </html>
