@@ -42,14 +42,12 @@ h1 {
   background-color: rgb(230, 230, 230);
   border-radius: 10px;
   padding: 40px 200px;
- display: flex;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-
 
 #question {
   font-size: 25px;
@@ -99,6 +97,11 @@ h1 {
 #submit-btn {
   width: auto;
   text-align: center;
+}
+
+#highscore-initials {
+  border-radius: 10px;
+  font-size: 20px;
 }
 
 .hide {
