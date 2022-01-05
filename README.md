@@ -1,7 +1,7 @@
 # code-quiz
 
 ## Description 
-Code quiz is an timed multiple-choice quiz. The app is built using HTML, CSS and JavaScript. 
+Code quiz is a timed multiple-choice quiz. The app is built using HTML, CSS and JavaScript. 
 
 ## Deployment
 [Link](https://mariamv29.github.io/code-quiz/)
