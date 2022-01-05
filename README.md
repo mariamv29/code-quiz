@@ -33,3 +33,16 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
+---
+
+🏆 
+## Badges
+
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
+
+
+
+## Contributing / Credits
+
+[mariamv29](https://github.com/mariamv29/README-generator.git)
